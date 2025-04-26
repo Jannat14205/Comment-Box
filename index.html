@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f8f9fa;
+    }
+    .comment-box {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+    }
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .comment {
+      background-color: #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      max-width: 700px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="comment-box">
+    <textarea id="comment-input" rows="5" placeholder="Write your comment here..."></textarea>
+    <br>
+    <button id="post">Post Your Comment</button>
+
+    <!-- Comments will appear here -->
+    <div id="comments-container"></div>
+  </div>
+
+  <script>
+    document.getElementById('post').addEventListener('click', function() {
+      const commentBox = document.getElementById('comment-input');
+      const commentText = commentBox.value.trim();
+
+      if (commentText === '') {
+        alert('Please write something before posting!');
+        return;
+      }
+
+      const commentContainer = document.getElementById('comments-container');
+
+      // Create a new comment div
+      const newComment = document.createElement('div');
+      newComment.className = 'comment';
+      newComment.innerText = commentText;
+
+      // Add the new comment to the top
+      commentContainer.prepend(newComment);
+
+      // Clear textarea
+      commentBox.value = '';
+    });
+  </script>
+
+</body>
+</html>
+
